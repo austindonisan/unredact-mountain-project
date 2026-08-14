@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Unredact Mountain Project",
+  "version": "1.0",
+  "description": "Restores the original names of routes and areas that Mountain Project displays as \"Crag | 1234\" placeholders.",
+  "homepage_url": "https://www.mountainproject.com/",
+
+  "permissions": ["storage"],
+
+  "host_permissions": ["https://www.mountainproject.com/*"],
+
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.mountainproject.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+
+  "action": {
+    "default_title": "Unredact Mountain Project",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "unredact-mountain-project@austin.donisan",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}
